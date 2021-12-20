@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Select Bank</ion-title>
+    <ion-button color="danger" (click)="dismiss()">
+      <span ion-text color="primary" showWhen="ios"></span>
+      <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content inset="true">
+  <ion-list>
+    <ion-radio>
+      <ion-list-header color="tertiary">
+        <ion-label>New This Week</ion-label>
+        <ion-button>See All</ion-button>
+      </ion-list-header>
+
+      <ion-item *ngFor="let x of banksList; let i=index;">
+        <ion-label>{{x}}</ion-label>
+        <ion-radio slot="start" [value]="x"></ion-radio>
+      </ion-item>
+    </ion-radio>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-button (click)="dismiss()" color="success" expand="block" fill="clear" shape="round">
+    Cancel
+  </ion-button>
+  <ion-button (click)="dismiss()" color="success" expand="block" fill="clear" shape="round">
+    OK
+  </ion-button>
+</ion-footer>

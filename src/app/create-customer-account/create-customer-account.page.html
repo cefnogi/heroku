@@ -1,0 +1,215 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-buttons>
+    <ion-title>Create Customer Account</ion-title>
+    <ion-buttons slot="end" (click)="goHome()">
+      <ion-icon name="home"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="create-customer-account">
+    <form [formGroup]="createCustomerAccountForm" action="/" (ngSubmit)="onCreateCustomerAccount()" novalidate>
+      <ion-item>
+        <ion-label position="stacked">Business Name</ion-label>
+        <ion-input formControlName="customer_business_name" type="text" placeholder="Enter Business Name"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_business_name.errors?.required">
+        Business Name Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">Business Type</ion-label>
+        <ion-select formControlName="customer_business_type" value="customer_business_type" multiple="false" placeholder="Business Type"
+          name="customer_business_type">
+          <ion-select-option value="individual">Individual</ion-select-option>
+          <ion-select-option value="company">Company</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_business_type.errors?.required">
+        Business Type Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">City</ion-label>
+        <ion-input formControlName="customer_city"  type="text" placeholder="Enter City">
+        </ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_city.errors?.required">
+        City Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">Individual Country</ion-label>
+        <ion-input formControlName="customer_individual_country" type="text" placeholder="Enter Country"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_individual_country.errors?.required">
+        Country Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">Address1</ion-label>
+        <ion-input formControlName="customer_address_1" type="text" placeholder="Enter Address1"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_address_1.errors?.required">
+        Address1 Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">Address2</ion-label>
+        <ion-input formControlName="customer_address_2" type="text" placeholder="Enter Address2"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_address_2.errors?.required">
+        Address2 Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">State</ion-label>
+        <ion-input formControlName="customer_state" type="text" placeholder="Enter State">
+        </ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_state.errors?.required">
+        State Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">Postal Code</ion-label>
+        <ion-input formControlName="customer_postal_code" type="number"
+          placeholder="Enter Postal Code"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_postal_code.errors?.required">
+        Postal Code Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">Date Of Birth</ion-label>
+        <ion-datetime formControlName="customer_dob" placeholder="Select a Date">
+        </ion-datetime>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_dob.errors?.required">
+        DOB Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">Phone Number</ion-label>
+        <ion-input formControlName="customer_phone_number" type="number" placeholder="Enter Phone Number"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_phone_number.errors?.required">
+        Phone Number Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">SSN</ion-label>
+        <ion-input formControlName="customer_ssn" type="number" placeholder="Enter Social Security Number"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_ssn.errors?.required">
+        Social Security Number Is Required
+      </span>
+      <ion-radio-group formControlName="customer_gender" value="male">
+        <ion-list-header>
+          <ion-label>Gender</ion-label>
+        </ion-list-header>
+        <ion-item style="margin-bottom: 0px;">
+          <ion-label>Male</ion-label>
+          <ion-radio slot="start" color="success" value="male" selected></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Female</ion-label>
+          <ion-radio slot="start" color="success" value="female"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+      <ion-item>
+        <ion-label position="stacked">Account Holder Name</ion-label>
+        <ion-input formControlName="customer_account_holder_name" type="text" placeholder="Enter Account Holder Name">
+        </ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_account_holder_name.errors?.required">
+        Account Holder Name Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">Account Holder Type</ion-label>
+        <ion-select formControlName="customer_account_holder_type" value="customer_business_type" multiple="false" placeholder="Business Type"
+          name="customer_account_holder_type">
+          <ion-select-option value="individual">Individual</ion-select-option>
+          <ion-select-option value="company">Company</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Account Routing Number</ion-label>
+        <ion-input formControlName="customer_account_routing_number" type="text"
+          placeholder="Enter Account Routing Number"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_account_routing_number.errors?.required">
+        Account Routing Number Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">Account Number</ion-label>
+        <ion-input formControlName="customer_account_number" type="text"
+          placeholder="Enter Account Number"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_account_number.errors?.required">
+        Account Number Is Required
+      </span>
+
+      <ion-item>
+        <ion-label position="stacked">MCC</ion-label>
+        <ion-input formControlName="customer_mcc" type="number" placeholder="Enter MCC">
+        </ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_mcc.errors?.required">
+        MCC Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">URL</ion-label>
+        <ion-input formControlName="customer_url" type="text" placeholder="Enter URL">
+        </ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_url.errors?.required">
+        URL Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">TOS Acceptance</ion-label>
+        <ion-datetime formControlName="customer_tos_date" placeholder="Select Date">
+        </ion-datetime>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_tos_date.errors?.required">
+        TOS Acceptance Date Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">IP</ion-label>
+        <ion-input formControlName="customer_ip" type="string" placeholder="Enter IP Address">
+        </ion-input>
+      </ion-item>
+      
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_ip.errors?.required">
+        IP Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">Upload Proof Of Identity (Front and Back)</ion-label>
+        <div class="front-image-section">
+          <ion-input formControlName="frontFileName" class="front-image-file-path" type="text" placeholder="Front Image File" [disabled]="true">{{frontFileName}}</ion-input>
+          <input style="display: none;" #frontFile accept="image/*" type='file' (change)="populateFrontFileName($event)" />
+          <ion-button class="front-image-browse-button" color="primary" shape="round" (click)="frontFile.click()">Browse</ion-button>
+        </div>
+        <div class="back-image-section">
+          <ion-input formControlName="backFileName" class="back-image-file-path" type="text" placeholder="Back Image File" [disabled]="true">{{backFileName}}</ion-input>
+          <input style="display: none;" #backFile accept="image/*" type='file'
+          (change)="populateBackFileName($event)" />
+          <ion-button class="back-image-browse-button" color="primary" shape="round" (click)="backFile.click()">Browse</ion-button>
+        </div>
+        <!-- <div class="image-preview" [hidden]="true">
+          <h4>Preview: </h4>
+          <ion-row>
+            <ion-col>
+              <div class="front-image-preview" *ngFor="let image of imgRes">
+                <ion-icon class="discard-front-image-preview" slot="start" name="md-close" (click)="discardImage()"></ion-icon>
+                <img src="{{image}}" width="50px" height="50px">
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="back-image-preview">
+                <ion-icon class="discard-back-image-preview" slot="start" name="md-close" (click)="discardImage()"></ion-icon>
+                <img src="{{image}}" width="50px" height="50px">
+              </div>
+            </ion-col>
+          </ion-row>
+        </div> -->
+        <ion-button [class.button-disabled]="isFrontFileNotBrowsed && isBackFileNotBrowsed" class="upload-button" color="primary" shape="round" (click)="uploadImageToServer()">Upload</ion-button>
+      </ion-item>
+      <ion-button class="create-customer-account-button" expand="block" type="submit" color="primary" [class.button-disabled]="isFrontImageNotUploaded && isBackImageNotUploaded">Create Customer Account</ion-button>
+    </form>
+  </div>
+</ion-content>

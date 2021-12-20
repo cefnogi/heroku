@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-buttons>
+    <ion-title>Full-History</ion-title>
+    <ion-buttons slot="end" class="btn-right">
+      <ion-icon name="more"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="main-container">
+    <div class="card">
+      <div>
+        <div>
+          TransactionId:
+        </div>
+        <div class="inner-detail">
+          <div>
+            {{transactionId || '--'}}
+          </div>
+        </div>
+      </div>
+      <button (click)="copyTransaction()" class="btn-copy" type="button">
+        copy
+      </button>
+    </div>
+    <div class="card">
+      <div class="detail">
+        <div>
+          <div style="margin-top: 7px;">
+            <div>
+              Name:
+            </div>
+            <div style="margin-top: 5px;">
+              {{perticularHistory?.personalDetail?.individual?.first_name || '----'}}
+            </div>
+          </div>
+          <div style="margin-top: 7px;">
+            <div>
+              Phone:
+            </div>
+            <div style="margin-top: 5px;">
+              {{perticularHistory?.personalDetail?.individual?.phone || '----'}}
+            </div>
+          </div>
+        </div>
+        <div class="amount">
+          ${{perticularHistory?.amount || '--'}}
+        </div>
+      </div>
+    </div>
+    <div class="card bank">
+      <div>
+        Bank Account:
+      </div>
+      <div style="margin-top: 5px;">
+        {{perticularHistory?.personalDetail?.external_accounts?.data[0]?.account || '----'}}
+      </div>
+    </div>
+  </div>
+</ion-content>

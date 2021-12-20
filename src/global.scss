@@ -1,0 +1,175 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800&display=swap');
+h1, h2, h3, h4, h5, h6, p, input, textarea, ion-buttons {
+  font-family: 'Work Sans', sans-serif;
+}
+ion-input, ion-textarea {
+  font-family: 'Work Sans', sans-serif!important;
+}
+p {
+  font-size: 14px;
+  line-height: 20px;
+}
+ion-button {
+  width: auto!important;
+  box-shadow: inherit!important;
+}
+.button-solid {
+  background: transparent;
+}
+input:focus {outline: none!important;}
+.btn-transparent {
+  --background: transparent!important;
+  --color: #000!important;
+  --box-shadow: none;
+  margin-top: 9px!important;
+  font-size: .9rem!important;
+}
+
+.button{
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 20px;
+  font-family: "Work Sans", sans-serif;
+  text-transform: uppercase;
+  white-space: unset;
+  font-weight: 500;
+  --border-radius: 30px!important;
+  --background: linear-gradient(to bottom, #32abe8, #2699d4);
+}
+.button:focus {outline: none!important;}
+
+
+ion-header {
+  .button {
+    --background: transparent!important;
+    --box-shadow: none;
+    margin: 0!important;
+    font-size: 1.4rem!important;
+  }
+  ion-title {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 18px;
+    text-transform: capitalize;
+    img {
+      width: 110px;
+      margin-top: 6px;
+    }
+  }
+  ion-buttons {
+    font-size: 26px;
+  }
+  .btn-right {
+    margin-right: 10px;
+    &:last-child {
+      margin-right: 15px;
+    }
+    img {
+      width: 20px;
+    }
+    ion-icon {
+      font-size: 28px;
+    }
+  }
+  ion-badge {
+    width: 23px;
+    height: 23px;
+    line-height: 17px;
+    font-weight: 300;
+    border-radius: 50%;
+    position: relative;
+    top: -8px;
+    right: 1px;
+    font-size: 12px;
+  }
+}
+
+ul {
+  padding-left: 20px;
+  li {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    list-style-type: circle;
+  }
+}
+ion-toast, ion-label, ion-item, ion-label, ion-select, ion-searchbar, ion-datetime {
+  font-family: 'Work Sans', sans-serif!important;
+}
+ion-datetime {
+  padding-left: 0!important;
+}
+
+.action-sheet-title {
+  font-family: "Work Sans", sans-serif !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  padding: 18px 16px !important;
+  height: 55px !important;
+  font-size: 17px !important;
+  background: #121315!important;
+}
+.action-sheet-button {
+  height: 44px!important;
+  font-size: 15px!important;
+  color: #000!important;
+  font-family: 'Work Sans', sans-serif!important;
+}
+
+.searchbar-input.sc-ion-searchbar-md {
+  font-size: 15px!important;
+  box-shadow: none!important;
+  border: 1px solid #b2b3b2;
+  font-family: 'Work Sans', sans-serif!important;
+}
+.searchbar-input.sc-ion-searchbar-ios {
+  font-size: 15px!important;
+  box-shadow: none!important;
+  border: 1px solid #b2b3b2;
+  font-family: 'Work Sans', sans-serif!important;
+}
+
+ion-toolbar {
+  padding: 10px;
+}
+
+ion-title {
+  font-size: 25px !important;
+}
+
+.main-container {
+  padding: 15px;
+}
+
+.edit-invoice-modal-dialog .modal-wrapper {
+  height: 80%;
+  top: 30%;
+  position: absolute; 
+  display: block;  
+}

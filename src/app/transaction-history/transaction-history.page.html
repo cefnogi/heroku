@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-buttons>
+    <ion-title>History</ion-title>
+    <ion-buttons slot="end" (click)="goHome()">
+      <ion-icon name="home"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- <div class="main-container">
+    <div class="history-list">
+      <div class="list-history-card" *ngFor="let history of historyList" (click)="showFullHistory(history)">
+        <div>
+         Order ID:  {{history.transfer_group || 'NONE'}}
+        </div>
+        <div style="margin-top: 5px;">
+          Amount: {{history.amount || '00000'}}
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div class="history">
+    <div *ngIf="historyList.length > 0; else noHistory" class="history-list" style="padding-top: 15px">
+      <div style="background-color: gray;" id="invoice_single_item" *ngFor="let history of historyList; let i =index" class="list-single" (click)="showHistoryOptions(i)">
+        <div style="width: 100%;">
+          <div style="display: flex">
+            <h4 style="width: 80%">Mode: {{history?.payment_mode}}</h4>
+            <h4 style="width: 80%">Amount: ${{history?.history?.amount / 100}}</h4> 
+            <h4 style="width: 80%">Date: {{history?.transaction_date}}</h4>
+            <h4 style="width: 80%">Time: {{history?.transaction_time}}</h4>
+          </div>
+          <div *ngIf="history.showOptions" text-center>
+            <div>
+              <ion-button style="margin-right: 10px; " color="primary" (click)="viewSingleHistory(i)">
+                View
+              </ion-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noHistory>
+      <h4 style="display: grid; place-items: center"> No History </h4>
+    </ng-template>
+  </div>
+</ion-content>
+<!-- <ion-footer>
+  <div text-center>
+    <ion-button (click)="showBankList()" class="showBankListButton"> Link Your Bank Account</ion-button>
+  </div>
+</ion-footer> -->

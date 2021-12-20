@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Gas Connection Bill</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="ios-arrow-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <ion-list>
+      <ion-item>
+        <ion-select placeholder="Select Gas Operator">
+          <ion-select-option value="g1">Petroleum & Natural Gas Regulatory Board</ion-select-option>
+          <ion-select-option value="g2">Oil Industry Safety Directorate</ion-select-option>
+          <ion-select-option value="g3">Oil Industry Development Board</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Customer ID"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="number" placeholder="Amount"></ion-input>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-button (click)="transactionsuccess()">Proceed to pay</ion-button>
+</ion-footer>
+

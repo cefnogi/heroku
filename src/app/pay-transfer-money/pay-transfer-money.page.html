@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-buttons>
+    <ion-title>Pay/Transfer Money</ion-title>
+    <ion-buttons slot="end" (click)="goHome()">
+      <ion-icon name="home"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="main-content">
+    <div class="balance">
+      <h2 style="text-align: center;color: black;">Current Wallet Amount</h2>
+      <h2>{{availableBalance || '--'}} <span style="margin-left: -5px;">$</span></h2>
+    </div>
+    <div class="customer-categories">
+      <h4>Customer Category</h4>
+      <ion-item text-center>
+        <ion-select value="" multiple="false" placeholder="Select Customer Category">
+          <ion-select-option value="employee">Employee</ion-select-option>
+          <ion-select-option value="services">Services</ion-select-option>
+          <ion-select-option value="goods">Goods</ion-select-option>
+          <ion-select-option value="customer">Customer</ion-select-option>
+          <ion-select-option value="friends-and-family">Friends & Family</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <!-- <div class="add-group"> -->
+    <!-- <ion-item class="add-money">
+        <ion-label>Add Or PayOut </ion-label>
+        <ion-input [(ngModel)]="selectedAmount" placeholder="Enter The Amount" type="number"></ion-input>
+      </ion-item> -->
+    <!-- <div class='btn-add-payout'> -->
+    <!--         
+        <button (click)="addingFund()" type="button" class="add-group-button">
+          AddToStripe
+        </button> -->
+
+    <!-- <button ion-button (click)="selectPayment()" type="button" class="add-group-button">
+          Add Balance
+        </button> -->
+
+    <!-- <button (click)="payingOutFund()" type="button" class="add-group-button">
+          TransferToBank
+        </button> -->
+
+    <!-- </div> -->
+
+    <!-- </div> -->
+    <div class="customers">
+      <div class="customers">
+        <div style="background-color: gray;" *ngFor="let customer of allCustomers; let i =index" class="list-single"
+          [hidden]="!customer.charges_enabled">
+          <div style="width: 100%;">
+            <div style="display: flex">
+              <h4 style="width: 80%;">{{customer?.individual?.first_name || customer?.business_profile?.name || '----'}}
+              </h4>
+              <ion-button [disabled]="!customer.charges_enabled" style="margin-top: -1px;"
+                (click)="transferMoney(i, customer)" color="primary">
+                <!-- <ion-icon   name="logo-usd" style="font-size: 25px"></ion-icon> -->
+                Send
+              </ion-button>
+            </div>
+            <div *ngIf="customer.edit">
+              <div class="transfer-money">
+                <ion-item class="tranfering-input">
+                  <ion-label>Transfer Amount</ion-label>
+                  <ion-input [(ngModel)]="selectedTransferAmount" placeholder="Enter The Amount" type="number">
+                  </ion-input>
+                </ion-item>
+                <ion-button style="margin-left: 40px; margin-right: 40px;"
+                  (click)="availableBalance >= selectedTransferAmount ? confirmPayout(customer) : showInsufficientBalanceMessage()"
+                  color="primary" expand="block">
+                  Send To Customer
+                </ion-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noCustomers>
+      <h4 style="display: grid; place-items: center"> No Customers </h4>
+    </ng-template>
+  </div>
+</ion-content>
+
+<!-- <ion-footer>
+  <div text-center>
+    <ion-button (click)="showBankList()"> Link Your Bank Account</ion-button>
+  </div>
+</ion-footer> -->

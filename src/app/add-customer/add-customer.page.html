@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-buttons>
+    <ion-title>Add Customer</ion-title>
+    <ion-buttons slot="end" (click)="goHome()">
+      <ion-icon name="home"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="add-customer">
+    <form [formGroup]="addCustomerForm" action="/" (ngSubmit)="onAddCustomer()" novalidate>
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input formControlName="customer_email" type="text" placeholder="Enter Email">
+        </ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_email.errors?.required">
+        Email Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">First Name</ion-label>
+        <ion-input formControlName="customer_first_name" type="text" placeholder="Enter First Name"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_first_name.errors?.required">
+        First Name Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">Last Name</ion-label>
+        <ion-input formControlName="customer_last_name" type="text" placeholder="Enter Last Name"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_last_name.errors?.required">
+        Last Name Is Required
+      </span>
+      <ion-item>
+        <ion-label position="stacked">Customer Type</ion-label>
+        <ion-select formControlName="customer_type" multiple="false" placeholder="Customer Type"
+          name="customer_type">
+          <ion-select-option value="employee">Employee</ion-select-option>
+          <ion-select-option value="goods">Goods</ion-select-option>
+          <ion-select-option value="services">Services</ion-select-option>
+          <ion-select-option value="customer">Customer</ion-select-option>
+          <ion-select-option value="customer">Friends & Family</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_type.errors?.required">
+        Customer Type Is Required
+      </span> 
+      <!-- <ion-item>
+        <ion-label position="stacked">Maiden Name</ion-label>
+        <ion-input type="text"
+          placeholder="Enter Maiden Name"></ion-input>
+      </ion-item> -->
+      
+     
+      
+      
+      
+      
+      
+      
+      
+      
+
+      <!-- <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_maiden_name.errors?.required">
+        Maiden Name Is Required
+      </span> -->
+      
+     
+      
+     
+      
+      
+      
+     
+      <ion-button class="add-customer-button" expand="block" type="submit" color="primary">Add Customer</ion-button>
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-buttons>
+    <ion-title>Connect Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="accounts">
+    <div *ngIf="allAccounts.length > 0; else noAccounts" class="account-list" style="padding-top: 15px;">
+      <div style="background-color: #808080;" id="account_single_item" *ngFor="let account of allAccounts; let i =index" class="list-single" (click)="showConnectButton(i)">
+        <div style="width: 100%;">
+          <div style="display: flex">
+            <h4 style="width: 80%">{{account?.name}}</h4> 
+            <ion-button style="margin-right: 10px; margin-top: -1px;" color="primary" (click)="connectAccount(i)">
+              Connect
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noAccounts>
+      <h4 style="display: grid; place-items: center"> No Accounts </h4>
+    </ng-template>
+  </div>
+</ion-content>

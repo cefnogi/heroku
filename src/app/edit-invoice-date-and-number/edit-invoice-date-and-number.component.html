@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Edit Invoice Date And Number</ion-title>
+    <ion-button (click)="dismiss()" slot="end">
+      <ion-icon name="md-close-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="edit-invoice">
+    <ion-item class="edit-invoice-item">
+      <ion-label position="floating">Invoice Date</ion-label>
+      <ion-datetime [(ngModel)]="invoice_date" displayFormat="YYYY-MMM-DD" display-timezone="utc" type="text" placeholder="Invoice Date"></ion-datetime>
+    </ion-item>
+    <ion-item class="edit-invoice-item">
+      <ion-label position="floating">Due Date</ion-label>
+      <ion-datetime [(ngModel)]="due_date" type="text" displayFormat="YYYY-MMM-DD" placeholder="Due Date"></ion-datetime>
+    </ion-item>
+    <ion-item class="edit-invoice-item">
+      <ion-label position="floating">Invoice Number</ion-label>
+      <ion-input [(ngModel)]="invoice_number" type="number" placeholder="Invoice Number"></ion-input>
+    </ion-item>
+    <ion-button expand="block" type="button" (click)="save()" color="primary">Save</ion-button>
+  </div>
+</ion-content>
+<ion-footer>
+  <!-- <ion-button expand="block" type="submit" color="primary">Save</ion-button> -->
+</ion-footer>

@@ -1,0 +1,408 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start" (click)="goBack()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-buttons>
+        <ion-title>Customers</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="main-layout">
+        <ion-item style="padding-bottom: 15px">
+            <ion-label>Customer Type</ion-label>
+            <ion-select value="verified" [(ngModel)]="typeCustomer"  okText="Okay" cancelText="Dismiss">
+                <ion-select-option value="verified">Verified</ion-select-option>
+                <ion-select-option value="unVerified">Unverified</ion-select-option>
+                <ion-select-option value="VBCS">VBC-soleproprietorship</ion-select-option>
+                <ion-select-option value="VBCC">VBC - corporation,llc, or partnership</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <div class="list-single" style="background-color: #1e2023" (click)="addCustomerOwner()">
+            <h4> Add Customer</h4>
+        </div>
+        <div *ngIf="addCustomer">
+            <ion-list *ngIf="typeCustomer === 'verified'">
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="user.first_name" placeholder="First Name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="user.last_name" placeholder="Last  Name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="user.email" placeholder="Enter The Email"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="user.ip" placeholder="IP Adress"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="user.type" placeholder="Type"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="user.address" placeholder="Address 1"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="user.city" placeholder="City "></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="user.state" placeholder="State"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="user.zipcode" placeholder="Zip Code"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="date" [(ngModel)]="user.dob" placeholder="DOB"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="user.ssn" placeholder="SSN"></ion-input>
+                </ion-item>
+            </ion-list>
+            <ion-list *ngIf="typeCustomer === 'unVerified'">
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userUnverified.firstName" placeholder="First Name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userUnverified.lastName" placeholder="Last  Name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userUnverified.email" placeholder="Enter The Email"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userUnverified.ipAddress" placeholder="IP Adress"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userUnverified.businessName" placeholder="BusinessName"></ion-input>
+                </ion-item>
+            </ion-list>
+            <ion-list *ngIf="typeCustomer === 'VBCC'">
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.firstName" placeholder="First Name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.lastName" placeholder="Last  Name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.email" placeholder="Enter The Email"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.ipAddress" placeholder="IP Adress"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.type" placeholder="Type"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.address1" placeholder="Address 1"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.city" placeholder="City "></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.state" placeholder="State"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.postalCode" placeholder="Zip Code"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.controller.firstName" placeholder="Firstname"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.controller.lastName" placeholder="Last  Name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.controller.title" placeholder="title"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="date" [(ngModel)]="userVbcc.controller.dateOfBirth" placeholder="DOB"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.controller.ssn" placeholder="SSN"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.controller.address.address1" placeholder="Address1"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.controller.address.address2" placeholder="Address2"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.controller.address.city" placeholder="city"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.controller.address.stateProvinceRegion" placeholder="state"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.controller.address.postalCode" placeholder="postalcode"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.controller.address.country" placeholder="country"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.businessClassification" placeholder="businessClassification"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.businessType" placeholder="businessType"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.businessName" placeholder="businessName"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcc.ein" placeholder="ein"></ion-input>
+                </ion-item>
+            </ion-list>
+            <ion-list *ngIf="typeCustomer === 'VBCS'">
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcs.firstName" placeholder="First Name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcs.lastName" placeholder="Last  Name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcs.email" placeholder="Enter The Email"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcs.ipAddress" placeholder="IP Adress"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcs.type" placeholder="Type"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcs.address1" placeholder="Address 1"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcs.city" placeholder="City "></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcs.state" placeholder="State"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcs.postalCode" placeholder="Zip Code"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="date" [(ngModel)]="userVbcs.dateOfBirth" placeholder="DOB"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcs.ssn" placeholder="SSN"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcs.businessClassification" placeholder="businessClassification"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcs.businessType" placeholder="businessType"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcs.businessName" placeholder="businessName"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="userVbcs.ein" placeholder="ein"></ion-input>
+                </ion-item>
+            </ion-list>
+            <ion-button (click)="submitCustomer()">Submit</ion-button>
+        </div>
+        <div *ngIf="customers.length > 0; else noCustomers" class="customer-list" style="padding-top: 15px">
+            <div style="background-color: gray;" *ngFor="let customer of customers; let i =index"
+                 class="list-single">
+                <div style="width: 100%;">
+                    <div style="display: flex">
+                        <h4 (click)="openCustomerDetail(customer) "
+                            style="width: 80%">{{customer?.firstName + ' ' + customer?.lastName }}</h4>
+                        <ion-buttons style="padding-right: 5px">
+                            <ion-icon (click)="updateCustomer(i, customer)" name="create"
+                                      style="font-size: 25px"></ion-icon>
+                            <!--                        <ion-icon (click)="deleteCustomer(i, customer)" name="trash" style="font-size: 25px"></ion-icon>-->
+                        </ion-buttons>
+                    </div>
+                    <div style="padding-top: 25px" *ngIf="customer?.edit === true">
+                        <ion-list *ngIf="checkUser('verified', customer)">
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].firstName"
+                                           placeholder="First Name"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].lastName"
+                                           placeholder="Last  Name"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].email"
+                                           placeholder="Enter The Email"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].ipAddress"
+                                           placeholder="IP Adress"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].type"
+                                           placeholder="Type"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].address1"
+                                           placeholder="Address 1"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].city"
+                                           placeholder="City "></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].state"
+                                           placeholder="State"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].postalCode"
+                                           placeholder="Zip Code"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="date" [(ngModel)]="editCustomer[i].dateOfBirth"
+                                           placeholder="DOB"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].ssn"
+                                           placeholder="SSN"></ion-input>
+                            </ion-item>
+                        </ion-list>
+                        <ion-list *ngIf="checkUser('unVerified', customer)">
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].firstName" placeholder="First Name"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].lastName" placeholder="Last  Name"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].email" placeholder="Enter The Email"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].ipAddress" placeholder="IP Adress"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].businessName" placeholder="BusinessName"></ion-input>
+                            </ion-item>
+                        </ion-list>
+                        <ion-list *ngIf="checkUser('VBCS', customer)">
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].firstName" placeholder="First Name"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].lastName" placeholder="Last  Name"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].email" placeholder="Enter The Email"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].ipAddress" placeholder="IP Adress"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].type" placeholder="Type"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].address1" placeholder="Address 1"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].city" placeholder="City "></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].state" placeholder="State"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].postalCode" placeholder="Zip Code"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="date" [(ngModel)]="editCustomer[i].dateOfBirth" placeholder="DOB"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].ssn" placeholder="SSN"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].businessClassification" placeholder="businessClassification"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].businessType" placeholder="businessType"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].businessName" placeholder="businessName"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].ein" placeholder="ein"></ion-input>
+                            </ion-item>
+                        </ion-list>
+                        <ion-list *ngIf="checkUser('VBCC', customer)">
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].firstName" placeholder="First Name"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].lastName" placeholder="Last  Name"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].email" placeholder="Enter The Email"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].ipAddress" placeholder="IP Adress"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].type" placeholder="Type"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].address1" placeholder="Address 1"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].city" placeholder="City "></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].state" placeholder="State"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].postalCode" placeholder="Zip Code"></ion-input>
+                            </ion-item>
+                            <div style="padding: 0 23px">
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].controller.firstName" placeholder="Firstname"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].controller.lastName" placeholder="Last  Name"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].controller.title" placeholder="title"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="date" [(ngModel)]="editCustomer[i].controller.dateOfBirth" placeholder="DOB"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].controller.ssn" placeholder="SSN"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].controller.address.address1" placeholder="Address1"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].controller.address.address2" placeholder="Address2"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].controller.address.city" placeholder="city"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].controller.address.stateProvinceRegion" placeholder="state"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].controller.address.postalCode" placeholder="postalcode"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].controller.address.country" placeholder="country"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].businessClassification" placeholder="businessClassification"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].businessType" placeholder="businessType"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].businessName" placeholder="businessName"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editCustomer[i].ein" placeholder="ein"></ion-input>
+                            </ion-item>
+                            </div>
+                        </ion-list>
+                        <ion-button (click)="submitCustomerUpdate(i)">Update</ion-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #noCustomers>
+        <h4 style="display: grid; place-items: center"> No Customers </h4>
+    </ng-template>
+</ion-content>

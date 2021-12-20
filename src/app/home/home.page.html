@@ -1,0 +1,150 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>Home</ion-title>
+        <ion-buttons slot="end" class="btn-right">
+            <ion-icon name="more"></ion-icon>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!-- <div class="ion-padding" *ngIf="userdata.type == 'personal'"> -->
+    <!-- <img src="assets/imgs/logo.png" alt=""> -->
+    <!-- <div class="listing"> -->
+    <!--             
+            <div class="list-single" (click)="customers()">
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>Beneficial Owner</h4>
+            </div> -->
+    <!-- <div class="list-single" (click)="mylinkedAccount()">
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>My Linked Account</h4>
+            </div> -->
+
+    <!-- <div class="list-single" (click)="invoiceList()">
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>Invoice To your Contact</h4>
+            </div> -->
+
+    <!-- <div class="list-single" (click)="transferMoney()">
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>Transfer Money</h4>
+            </div> -->
+
+
+    <!--
+                  <div class="list-single" (click)="people()">
+                    <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                    <h4>Uwallet</h4>
+                  </div>
+
+
+
+                  <div class="list-single">
+                    <span><img src="assets/imgs/ic_transfer.svg" alt="" (click)="transferMoney()"></span>
+                    <h4>Get Paid</h4>
+                  </div> -->
+
+
+    <!-- <div class="list-single">
+              <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+              <h4>Shop</h4>
+            </div> -->
+
+    <!-- <div class="list-single" (click)="logout()">
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>logout</h4>
+            </div> -->
+    <!-- </div> -->
+    <!-- </div> -->
+    <!--  <div class="ion-padding" *ngIf ="userdata.type == 'business'">-->
+    <div class="ion-padding">
+        <img src="assets/imgs/logo.png" alt="">
+        <div class="listing">
+
+            <!-- <div class="list-single" (click)="customers()">
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>Customers</h4>
+            </div> -->
+
+            <div class="list-single" (click)="goToAddMoneyToUWallet()">
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>Add Money To UWallet</h4>
+            </div>
+            <div class="list-single" (click)="goToPayOrTransferMoney()">
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>Pay/Transfer Money</h4>
+            </div>
+            <!-- <div class="list-single" (click)="transactionHistory()">
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>Transaction History</h4>
+            </div> -->
+            <!-- <div class="list-single" (click)="transactionHistory()">
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>Transaction History</h4>
+            </div> -->
+            <!-- <div class="list-single" (click)="transferToBankAccount()">
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>Transfer To Bank Account</h4>
+            </div> -->
+
+            <div class="list-single" (click)="goToInvoiceDashboard()">
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>Invoice To Your Customer</h4>
+            </div>
+
+            <div class="list-single" (click)="customers()"> 
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>Add Bank Account For Payment</h4>
+            </div>
+
+            <div class="list-single" (click)="transactionHistory()">
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>Transaction History</h4>
+            </div>
+            <!--             
+            <div class="list-single" (click)="people()">
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>LC</h4>
+            </div> -->
+
+            <div class="list-single" (click)="logout()">
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>logout</h4>
+            </div>
+        </div>
+    </div>
+    <div class="ion-padding" *ngIf="userdata.type == 'government'">
+        <img src="assets/imgs/logo.png" alt="">
+        <div class="listing">
+
+            <div class="list-single" (click)="mylinkedAccount()">
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>My Linked Account</h4>
+            </div>
+
+            <div class="list-single">
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>Pay Employee & Services</h4>
+            </div>
+
+            <div class="list-single" (click)="logout()">
+                <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+                <h4>Logout</h4>
+            </div>
+
+        </div>
+    </div>
+</ion-content>
+<!-- <ion-footer>
+    <mr-ngx-plaid-link-button env="sandbox" publicKey="e2aa6bd8b277e8a8bd506cd3fe214e" institution=""
+        [countryCodes]="['US']" (Success)="onPlaidSuccess($event)" (Exit)="onPlaidExit($event)"
+        (Load)="onPlaidLoad($event)" (Event)="onPlaidEvent($event)" className="launch-plaid-link-button"
+        buttonText="Link Your Bank Account" (Click)="onPlaidClick($event)"></mr-ngx-plaid-link-button>
+</ion-footer> -->
+
+<!-- <ion-footer>
+    <div class='ion-text-center'>
+        <ion-button (click)="showBankList()" class="showBankListButton"> Link Your Bank Account</ion-button>
+    </div>
+</ion-footer> -->

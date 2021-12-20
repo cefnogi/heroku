@@ -1,0 +1,39 @@
+.inner-detail {
+    display: flex;
+    margin-top: 5px;
+}
+
+.card {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: #fff;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+.card {
+    .btn-copy {
+        border-radius: 5px;
+    }
+}
+
+.detail {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.amount {
+    display: grid;
+    place-content: center;
+}
+
+.bank {
+    display: block;
+}
+
+.main-container {
+    margin-top: 25px;
+}

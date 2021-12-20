@@ -1,0 +1,29 @@
+ion-content {
+  --background: #f7f7f7;
+  ion-card-title{
+    .title.element.style{
+      color: rgb(55, 128, 197);
+    }
+    
+}
+}
+.block_wrapper {
+  padding: 16px;
+  .single-block {
+    text-align: center;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 8px 15px -8px #ddd;
+    h6 {
+      text-transform: capitalize;
+    }
+    img {
+      width: 55px;
+      margin-top: 5px;
+    }
+  }
+ 
+// ion-card-title.md.hydrated {
+//   color: aqua;
+// }
+}

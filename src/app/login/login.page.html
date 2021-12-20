@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Login</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="ios-arrow-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <div class="ion-padding">
+   <img src="assets/imgs/logo.png" alt="">
+     <ion-list>
+         <ion-item>
+             <ion-input type="text" [(ngModel)]="user.email" placeholder="Email"></ion-input>
+         </ion-item>
+         <ion-item>
+             <ion-input type="password" [(ngModel)]="user.password" placeholder="Password"></ion-input>
+         </ion-item>
+     </ion-list>
+     <p>Don't have an account?<ion-button class="btn-transparent" (click)="register()">Register</ion-button></p>
+     <!-- <ion-button class="btn-transparent">Are you in business?</ion-button> -->
+     <ion-button (click)="login()">Login</ion-button>
+     <ion-button class="btn-transparent" (click)="forgotpassword()">Forgot Password?</ion-button>
+ </div>
+</ion-content>

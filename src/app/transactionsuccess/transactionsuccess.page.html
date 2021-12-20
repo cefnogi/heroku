@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="ios-arrow-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="top-display">
+    <h5></h5>
+    <img src="assets/imgs/pay-success.svg" alt="">
+    <h2><span>$</span>{{amountpaid}}</h2>
+    <p>Sent successfully to <br> {{data.full_name}}</p>
+  </div>
+  <div class="wallet-view">
+     <h5>Transaction completed successfully</h5>
+    <!-- <h2><span>$</span>1200</h2> -->
+  </div>
+</ion-content>

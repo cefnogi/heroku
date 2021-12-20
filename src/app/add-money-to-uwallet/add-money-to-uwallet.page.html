@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-buttons>
+    <ion-title>Add Money To UWallet</ion-title>
+    <ion-buttons slot="end" (click)="goHome()">
+      <ion-icon name="home"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="main-content">
+    <div class="balance">
+      <h2 style="text-align: center;color: black;">Current Wallet Amount</h2>
+      <h2>{{availableBalance || '--'}} <span style="margin-left: -5px;">$</span></h2>
+    </div>
+    <ion-item class="add-money">
+      <!-- <ion-label>Add Or PayOut </ion-label> -->
+      <ion-input text-center [(ngModel)]="selectedAmount" placeholder="Enter The Amount" type="number"></ion-input>
+    </ion-item>
+    <div class="add-group">
+      <div class='btn-add-payout'>
+        <button ion-button (click)="selectPayment()" type="button" class="add-group-button">
+          Add Balance
+        </button>
+      </div>
+    </div>
+  </div>
+</ion-content>

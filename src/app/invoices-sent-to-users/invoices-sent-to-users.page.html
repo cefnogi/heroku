@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-buttons>
+    <ion-title>Invoices Sent To Users</ion-title>
+    <ion-buttons slot="end" (click)="goHome()">
+      <ion-icon name="home"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="invoices">
+    <div *ngIf="allInvoices.length > 0; else noInvoices" class="invoice-list" style="padding-top: 15px">
+      <div style="background-color: #808080;" id="invoice_single_item" *ngFor="let invoice of allInvoices; let i =index" class="list-single" (click)="showInvoiceOptions(i)">
+        <div style="width: 100%;">
+          <div style="display: flex">
+            <h4 style="width: 80%">Invoice No: {{invoice?.id}}</h4> 
+            <h4 style="width: 80%">To: {{invoice?.to_name}}</h4>
+            <h4 style="width: 80%">Invoice Date: {{invoice?.invoice_date}}</h4>
+            <h4 style="width: 80%">Amount: {{invoice?.amount}}</h4>      
+          </div>
+          <div style="display: flex">
+            <h4 style="width: 80%">Address: {{invoice?.address || 'NA'}}</h4>
+            <h4 style="width: 80%">Purpose: {{invoice?.purpose || 'NA'}}</h4>
+          </div>
+          <div *ngIf="invoice.showOptions" text-center>
+            <div>
+              <ion-button style="margin-right: 10px; " color="primary" (click)="viewInvoice(i)">
+                View
+              </ion-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noInvoices>
+      <h4 style="display: grid; place-items: center"> No Invoices </h4>
+    </ng-template>
+  </div>
+
+</ion-content>

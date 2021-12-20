@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-buttons>
+    <ion-title>Request Payment</ion-title>
+    <ion-buttons slot="end" (click)="goHome()">
+      <ion-icon name="home"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="invoice-details" [hidden]="true">
+    <div class="invoice-column">
+      <ion-text color="primary" class="invoice-number">
+        <span>Invoice # {{invoice.invoice_number}}</span>
+      </ion-text>
+      <div class="invoice-date">
+        <ion-text color="primary" class="invoice-actual-date">
+          <span>{{invoice.invoice_date}} - </span>
+        </ion-text>
+        <ion-text color="primary" class="invoice-due-date">
+          <span>{{invoice.invoice_due_date}}</span>
+        </ion-text>
+      </div>
+      <ion-button (click)="showEditDialog()" color="primary" shape="round" class="edit-invoice">
+        Edit
+      </ion-button>
+    </div>
+  </div>
+  <form [formGroup]="raiseInvoiceForm" action="/" (ngSubmit)="onInvoiceSubmit()" method='post' id='raise-invoice-form' novalidate>
+
+    <!-- <div class="customer-details">
+      <h5>Invoice Number: </h5>
+      <ion-item class="customer-name-item">
+        <ion-label position="floating">Enter Invoice No.</ion-label>
+        <ion-input formControlName="invoice_no" type="number" placeholder="Invoice Number" required>
+        </ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.amount.errors?.required">
+        Invoice Number Is Required
+      </span>
+    </div> -->
+
+    <div class="customer-details">
+      <h5>Amount: </h5>
+      <ion-item class="customer-name-item">
+        <ion-label position="floating">Enter Amount ($)</ion-label>
+        <ion-input formControlName="amount" type="number" placeholder="Amount" required>
+        </ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.amount.errors?.required">
+        Amount Is Required
+      </span>
+    </div>
+
+    <div class="customer-details">
+      <h5>Customer Details: </h5>
+      <ion-item class="customer-name-item">
+        <ion-label position="floating">Enter Customer Name</ion-label>
+        <ion-input formControlName="customer_name" id="customer_name_id" type="text" placeholder="Customer Name" required>
+        </ion-input>
+      </ion-item>
+      <ion-list [hidden]="hideCustomerList" class="customer-content">
+        <ion-item button *ngFor="let user of individualUsers" (click)="onUserItemClick(user.name, user.email)">
+          {{user.name}}
+        </ion-item>
+      </ion-list>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_name.errors?.required">
+        Customer Name is Required
+      </span>
+      <ion-item class="customer-email-item">
+        <ion-label position="floating">Enter Customer Email</ion-label>
+        <ion-input formControlName="customer_email" id="customer_email_id" type="text" placeholder="Customer Email" required>
+        </ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.customer_email.errors?.required">
+        Customer Email is Required
+      </span>
+    </div>
+
+    <div class="customer-details">  
+      <h5>Your Details: </h5>
+      <ion-item class="customer-name-item">
+        <ion-label position="floating">Enter Your Name</ion-label>
+        <ion-input formControlName="user_name" type="text" placeholder="Your Name" required></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.user_name.errors?.required">
+        Your Name is Required
+      </span>
+      <ion-item class="customer-email-item">
+        <ion-label position="floating">Enter Your Email</ion-label>
+        <ion-input formControlName="user_email" type="text" placeholder="Your Email" required disabled></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.user_email.errors?.required">
+        Your Email is Required
+      </span>
+    </div>
+    <div class="customer-details">  
+      <h5>Purpose: </h5>
+      <ion-item class="customer-name-item">
+        <ion-label position="floating">Enter Purpose</ion-label>
+        <ion-textarea autoGrow="true" formControlName="purpose" type="text" placeholder="Enter Purpose Here..." required></ion-textarea>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.user_name.errors?.required">
+        Purpose is Required
+      </span>
+    </div>
+    <div class="customer-details">
+      <h5>Address: </h5>
+      <ion-item class="customer-name-item">
+        <ion-label position="floating">Enter Address of the Payer</ion-label>
+        <ion-textarea formControlName="address" type="text" placeholder="Address" required>
+        </ion-textarea>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.amount.errors?.required">
+        Address Is Required
+      </span>
+    </div>
+    <ion-button class="raise-invoice-button" expand="block" type="submit" color="primary">Request Payment</ion-button>
+  </form>
+</ion-content>

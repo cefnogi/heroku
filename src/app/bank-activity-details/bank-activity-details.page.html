@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Details</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="ios-arrow-back"></ion-back-button>
+    </ion-buttons>
+	
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="card"  *ngFor="let item of AccountsDetails">
+    <div *ngIf="typeofcheck =='accounts' ">
+      <ion-card >
+        <ion-item>
+          <ion-label>
+            <ion-card-title class="title">{{item.name}}</ion-card-title>
+            <span>
+              AccountId:-
+            </span>
+            <p>{{item.account_id}}</p>
+          </ion-label>
+        </ion-item>
+        <!-- <ion-card-header>
+          <ion-card-title>Account Balance</ion-card-title>
+        </ion-card-header> -->
+        <!-- <ion-card-content>
+          <span>
+            Available Balance
+          </span>
+          <p>
+            {{item.balances.available}}
+          </p>
+          <span>
+            Current Balance
+          </span>
+          <p>
+            {{item.balances.current}}
+          </p>
+        </ion-card-content> -->
+      </ion-card>
+    </div>
+    <div *ngIf="typeofcheck =='balance' ">
+      <ion-card >
+        <ion-item>
+          <ion-label>
+            <ion-card-title >{{item.name}}</ion-card-title>
+            <span>
+              AccountId:-
+            </span>
+            <p>{{item.account_id}}</p>
+          </ion-label>
+        </ion-item>
+        <ion-card-header>
+          <ion-card-title>Account Balance</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <span>
+            Available Balance
+          </span>
+          <p>
+            {{item.balances.available}}
+          </p>
+          <span>
+            Current Balance
+          </span>
+          <p>
+            {{item.balances.current}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div *ngIf="typeofcheck =='transaction' ">
+     <p>
+       There is no transaction available right now.
+     </p>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,47 @@
+ion-header {
+  &:after {
+    background-image: none!important;
+  }
+}
+.top-display {
+  background: #259ad6;
+  text-align: center;
+  padding: 20px;
+  h5 {
+    color: #fff;
+    font-size: 16px;
+  }
+  img {
+    width: 80px;
+    margin: 20px 0;
+  }
+  h2 {
+    color: #fff;
+    font-size: 45px;
+    margin-top: 0;
+    span {
+      font-size: 22px;
+      vertical-align: super;
+      margin-right: 4px;
+    }
+  }
+  p {
+    color: #fff;
+  }
+}
+.wallet-view {
+  text-align: center;
+  padding: 60px 20px;
+  h5 {
+    font-size: 16px;
+  }
+  h2 {
+    font-size: 40px;
+    margin-top: 0;
+    span {
+      font-size: 22px;
+      vertical-align: super;
+      margin-right: 4px;
+    }
+  }
+}

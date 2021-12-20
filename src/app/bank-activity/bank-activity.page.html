@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Banking Transaction</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="ios-arrow-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+ 
+
+  <div class="ion-padding">
+    <img src="assets/imgs/logo.png" alt="">
+    <div class="listing">
+        <!-- Token::{{data.token}} -->
+       <div class="list-single" (click)="accounts()" >
+        <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+        <h4>Accounts </h4>
+      </div>
+      
+        <div class="list-single" (click)="balance()" >
+        <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+        <h4>Balance </h4>
+      </div>
+
+      
+      <div class="list-single" (click)="transactions()">
+        <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+        <h4>Transaction</h4>
+      </div>
+
+      <div class="list-single" (click)="sendMoney()">
+        <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+        <h4>Send Money</h4>
+      </div>
+      
+       <div class="list-single" (click)="bankTransfer()">
+        <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+        <h4>Bank Transfer</h4>
+      </div>
+
+      <div class="list-single" (click)="findBalance()">
+        <span><img src="assets/imgs/ic_transfer.svg" alt=""></span>
+        <h4>Find Balance</h4>
+      </div>
+      
+    
+
+   
+      
+     
+     
+   
+    </div>
+  </div>
+</ion-content>

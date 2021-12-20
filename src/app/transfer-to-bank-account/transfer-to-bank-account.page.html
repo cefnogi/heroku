@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-buttons>
+    <ion-title>Transfer To Bank Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="main-content">
+    <div class="balance">
+      <h2 style="text-align: center;color: black;">Current Wallet Balance</h2>
+      <h2>{{availableBalance || '--'}} <span style="margin-left: -5px;">$</span></h2>
+    </div>
+    <div class="customers">
+      <div *ngIf="allCustomers.length > 0; else noCustomers" class="customer-list">
+        <div style="background-color: gray;" *ngFor="let customer of allCustomers; let i =index" class="list-single" [hidden]="!customer.charges_enabled">
+          <div style="width: 100%;">
+            <div style="display: flex">
+              <h4 style="width: 80%;">{{customer?.individual?.first_name || customer?.business_profile?.name || '----'}}
+              </h4>
+              <ion-button [disabled]="!customer.charges_enabled" style="margin-top: -1px;"
+                (click)="transferMoney(i, customer)" color="primary">
+                <!-- <ion-icon   name="logo-usd" style="font-size: 25px"></ion-icon> -->
+                Pay
+              </ion-button>
+            </div>
+            <div *ngIf="customer.edit">
+              <div class="transfer-money">
+                <ion-item class="tranfering-input">
+                  <ion-label>Pay Amount</ion-label>
+                  <ion-input [(ngModel)]="selectedTransferAmount" placeholder="Enter The Amount" type="number">
+                  </ion-input>
+                </ion-item>
+                <ion-button style="margin-left: 40px; margin-right: 40px;" (click)="confirmPayout(customer)" color="primary" expand="block" >
+                  Pay To Customer
+                </ion-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noCustomers>
+      <h4 style="display: grid; place-items: center"> No Customers </h4>
+    </ng-template>
+  </div>
+</ion-content>
+
+<!-- <ion-footer>
+  <div text-center>
+    <ion-button (click)="showBankList()"> Link Your Bank Account</ion-button>
+  </div>
+</ion-footer> -->

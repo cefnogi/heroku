@@ -1,0 +1,41 @@
+.ion-padding {
+  text-align: center;
+  img {
+    width: 100px;
+    margin: 15px 0 25px;
+  }
+  .listing {
+    padding: 0 5px;
+    .list-single {
+      background: #2baff3;
+      text-align: left;
+      padding: 6px 7px;
+      margin-bottom: 10px;
+      border-radius: 30px;
+      display: flex;
+      span {
+        background: #fff;
+        width: 36px;
+        height: 36px;
+        text-align: center;
+        border-radius: 50%;
+      }
+      img {
+        margin: 5px 0 0;
+        width: 25px;
+      }
+      h4 {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 100;
+        text-transform: uppercase;
+        margin: 9px 0 4px 10px;
+      }
+    }
+  }
+
+}
+
+
+
+

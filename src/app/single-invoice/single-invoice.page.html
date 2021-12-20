@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-buttons>
+    <ion-title>Invoice</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="invoice-card" *ngIf="invoiceType === 'you'">
+    <div>
+      Invoice Number: {{invoice_id}}
+    </div>
+    <div style="margin-top: 10px;">
+      Amount: {{invoice_amount}}
+    </div>
+    <div style="margin-top: 10px;">
+      Sender Name: {{invoice_from_name}}
+    </div>
+    <div style="margin-top: 10px;">
+      Sender Email: {{invoice_from_email}}
+    </div>
+    <div style="margin-top: 10px;">
+      Address: {{address || 'NA'}}
+    </div>
+    <div style="margin-top: 10px;">
+      Purpose: {{purpose || 'NA'}}
+    </div>
+    <div style="margin-top: 10px;">
+      Your Name: {{invoice_to_name}}
+    </div>
+    <div style="margin-top: 10px;">
+      Your Email: {{invoice_to_email}}
+    </div>
+    <div style="margin-top: 10px;">
+      Invoice Date: {{invoice_date}}
+    </div>
+    <div *ngIf="invoiceType === 'you'" text-center>
+      <div>
+        <!-- <ion-button style="margin-right: 10px; " color="primary">
+          View PDF
+        </ion-button> -->
+        <ion-button style="margin-right: 10px;" color="primary" (click)="checkAndPayCustomer()">
+          Pay
+        </ion-button>
+      </div>
+    </div>
+  </div>
+  <div class="invoice-card" *ngIf="invoiceType === 'users'">
+    <div>
+      Amount: {{invoice_amount}}
+    </div>
+    <div style="margin-top: 10px;">
+      Sent To: {{invoice_to_name}}
+    </div>
+    <div style="margin-top: 10px;">
+      Sent To Email: {{invoice_to_email}}
+    </div>
+    <div style="margin-top: 10px;">
+      Your Name: {{invoice_from_name}}
+    </div>
+    <div style="margin-top: 10px;">
+      Address: {{address || 'NA'}}
+    </div>
+    <div style="margin-top: 10px;">
+      Purpose: {{purpose || 'NA'}}
+    </div>
+    <div style="margin-top: 10px;">
+      Your Email: {{invoice_from_email}}
+    </div>
+    <div style="margin-top: 10px;">
+      Invoice Date: {{invoice_date}}
+    </div>
+    <!-- <div *ngIf="invoiceType === 'you'" text-center>
+      <div>
+        <ion-button style="margin-right: 10px; " color="primary">
+          View PDF
+        </ion-button>
+        <ion-button style="margin-right: 10px;" color="primary">
+          Pay
+        </ion-button>
+      </div>
+    </div> -->
+  </div>
+</ion-content>

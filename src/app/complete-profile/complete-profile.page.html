@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Complete Profile</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="ios-arrow-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <h3>Fill up the other informations to complete Registration:</h3>
+    <ion-list>
+
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="user.full_name" readonly placeholder="Full Name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="user.first_name" placeholder="First Name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="user.last_name" placeholder="Last  Name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Account type</ion-label>
+        <ion-select [(ngModel)]="user.type">
+          <ion-select-option value="personal">Personal Account</ion-select-option>
+          <ion-select-option value="business">Business Account</ion-select-option>
+          <ion-select-option value="government">Government </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="email" [(ngModel)]="user.email" readonly placeholder="Email "></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="user.address" placeholder="Address 1"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="user.address2" placeholder="Address 2"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="user.city" placeholder="City"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="user.state" placeholder="State"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="user.zipcode" placeholder="Zip Code"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-input type="number" [(ngModel)]="user.phone" placeholder="Phone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="date" [(ngModel)]="user.dob" placeholder="DOB"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="user.ssn" placeholder="SSN"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="register_temp()">Submit</ion-button>
+  </div>
+</ion-content>

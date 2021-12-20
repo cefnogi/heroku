@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>People</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="ios-arrow-back"></ion-back-button>
+    </ion-buttons>
+	 <ion-buttons slot="end"  class="btn-right">
+      <ion-icon name="more">Add People</ion-icon>
+	  <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <div class="block_wrapper">
+   <ion-row>
+
+
+     <ion-col size="6" *ngFor="let info of renderData" (click)="fundTransferToUser(info)">
+       <div class="single-block">
+         <img src="assets/imgs/user.svg" alt="">
+          <h6>{{info.first_name}} {{info.last_name}}</h6>
+       </div>
+     </ion-col>
+    
+   </ion-row>
+   
+ </div>
+</ion-content>

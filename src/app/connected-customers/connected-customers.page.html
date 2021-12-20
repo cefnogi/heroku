@@ -1,0 +1,322 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-buttons>
+    <ion-title>Customers</ion-title>
+    <ion-buttons slot="end" (click)="goHome()">
+      <ion-icon name="home"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="main-layout">
+    <!-- <div class="list-single" (click)="addCustomer()">
+      <h4 class='add-customer'> Add Customer</h4>
+    </div> -->
+    <div text-center>
+      <ion-button (click)="addCustomer()">Add Customer</ion-button>
+    </div>
+    <div class='customer-form'>
+      <div *ngIf="isFrontImageUploaded" class="uploading-label">Front Image Uploaded</div>
+      <div *ngIf="isBackImageUploaded" class="uploading-label">Back Image Uploaded</div>
+      <div *ngIf="(!isFrontImageUploaded || !isBackImageUploaded) && showUpload" class='image-uploading'>
+        <input style="display: none;" #frontFile accept="image/*" type='file' (change)="uploadingImage($event)" />
+        <input style="display: none;" #backFile accept="image/*" type='file'
+          (change)="uploadingImage($event, 'back')" />
+        <button class="file-upload" (click)="!isFrontImageUploaded? frontFile.click(): backFile.click()">Upload
+          Image</button>
+        <h3 style="margin-top: 5px; margin-left: 10px;">{{frontFileName || backFileName || ''}}</h3>
+        <button type="button" (click)="!isFrontImageUploaded ? sendingFrontImage() : sendingFrontImage('back')"
+          class="send-btn">Send</button>
+      </div>
+      <div class="customer-form-inner" *ngIf="isAddCustomerClicked">
+        <ion-item>
+          <ion-label position='stacked'>Type</ion-label>
+          <ion-input type="text" [(ngModel)]="user.type" placeholder="Enter The Type"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>Country</ion-label>
+          <ion-input type="text" [(ngModel)]="user.country" placeholder="Enter THe Country"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>Email</ion-label>
+          <ion-input type="text" [(ngModel)]="user.email" placeholder="Enter The Email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>Business Type</ion-label>
+          <ion-input type="text" [(ngModel)]="user.business_type" placeholder="Enter The Business Type"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>City</ion-label>
+          <ion-input type="text" [(ngModel)]="user.individuals.city" placeholder="City"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>Individual Country</ion-label>
+          <ion-input type="text" [(ngModel)]="user.individuals.country" placeholder="Country"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>Address1</ion-label>
+          <ion-input type="text" [(ngModel)]="user.individuals.line1" placeholder="Address1"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>Address2</ion-label>
+          <ion-input type="text" [(ngModel)]="user.individuals.line2" placeholder="Address2"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>State</ion-label>
+          <ion-input type="text" [(ngModel)]="user.individuals.state" placeholder="State"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>Postal Code</ion-label>
+          <ion-input type="text" [(ngModel)]="user.individuals.postal_code" placeholder="Postal Code"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Date Of Birth</ion-label>
+          <ion-datetime [(ngModel)]="user.individuals.dob" placeholder="Select a Date"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input type="text" [(ngModel)]="user.individuals.email" placeholder="Induvidual Email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>First name</ion-label>
+          <ion-input type="text" [(ngModel)]="user.individuals.first_name" placeholder="First Name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>Lastname</ion-label>
+          <ion-input type="text" [(ngModel)]="user.individuals.last_name" placeholder="Last Name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>Maiden name</ion-label>
+          <ion-input type="text" [(ngModel)]="user.individuals.maiden_name" placeholder="Maiden Name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>Phone</ion-label>
+          <ion-input type="number" [(ngModel)]="user.individuals.phone" placeholder="Phone"></ion-input>
+        </ion-item>
+        <ion-radio-group [value]="user.individuals.gender">
+          <ion-list-header>
+            <ion-label>Gender</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label>Male</ion-label>
+            <ion-radio slot="start" color="success" value="male"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Female</ion-label>
+            <ion-radio slot="start" color="success" value="female"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+        <ion-item>
+          <ion-label position='stacked'>SSN</ion-label>
+          <ion-input type="text" [(ngModel)]="user.individuals.ssn_last_4" placeholder="SSN Last 4 Digit"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>Account Holder Name</ion-label>
+          <ion-input type="text" [(ngModel)]="user.externalAccount.account_holder_name"
+            placeholder="Account Holder Name">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>Account Holder Type</ion-label>
+          <ion-input type="text" [(ngModel)]="user.externalAccount.account_holder_type"
+            placeholder="Account Holder Type">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>Account Number</ion-label>
+          <ion-input type="text" (keypress)="numberOnlyValidation($event)"
+            [(ngModel)]="user.externalAccount.account_number" placeholder="Account Number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>Account Routing</ion-label>
+          <ion-input type="text" (keypress)="numberOnlyValidation($event)"
+            [(ngModel)]="user.externalAccount.routing_number" placeholder="Routing Number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>MCC</ion-label>
+          <ion-input type="number" [(ngModel)]="user.businessProfile.mcc" placeholder="MCC"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>URL</ion-label>
+          <ion-input type="text" [(ngModel)]="user.businessProfile.url" placeholder="URL"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>Business Name</ion-label>
+          <ion-input type="text" [(ngModel)]="user.businessProfile.name" placeholder="Business Name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">TOS Acceptance</ion-label>
+          <ion-datetime [(ngModel)]="user.tosAcceptance.date" placeholder="Select Date"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>IP</ion-label>
+          <ion-input type="text" [(ngModel)]="user.tosAcceptance.ip" placeholder="IP"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position='stacked'>SSN Number</ion-label>
+          <ion-input type="text" [(ngModel)]="user.individuals.id_number" placeholder="Full SSN Number"></ion-input>
+        </ion-item>
+        <ion-button (click)="submitCustomer()">Submit</ion-button>
+      </div>
+    </div>
+    <div class="customers">
+      <div *ngIf="allCustomers.length > 0; else noCustomers" class="customer-list" style="padding-top: 15px">
+        <div style="background-color: gray;" id="customer_single_item" *ngFor="let customer of allCustomers; let i =index" class="list-single">
+          <div style="width: 100%;">
+            <div style="display: flex">
+              <h4 style="width: 80%">{{customer?.individual?.email || customer?.business_profile?.name || '----'}}
+              </h4>
+              <button (click)="editCustomer(i, customer)" class="doller-btn" style="padding-right: 5px">
+                <ion-icon name="create" style="font-size: 25px"></ion-icon>
+              </button>
+              <button (click)="deleteCustomer(i)" class="doller-btn" style="padding-right: 5px">
+                <ion-icon name="md-trash" style="font-size: 25px"></ion-icon>
+              </button>
+            </div>
+            <div class="user-edit-main" *ngIf="customer.edit">
+              <!-- <ion-item>
+                <ion-label position='stacked'>Type</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.type" placeholder="Enter The Type"></ion-input>
+              </ion-item> -->
+              <!-- <ion-item>
+                <ion-label position='stacked'>Country</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.country" placeholder="Enter THe Country"></ion-input>
+              </ion-item> -->
+              <ion-item>
+                <ion-label position='stacked'>Email</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.email" placeholder="Enter The Email"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position='stacked'>Business Type</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.business_type" placeholder="Enter The Business Type">
+                </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position='stacked'>City</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.individuals.city" placeholder="City"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position='stacked'>Individual Country</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.individuals.country" placeholder="Country"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position='stacked'>Address1</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.individuals.line1" placeholder="Address1"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position='stacked'>Address2</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.individuals.line2" placeholder="Address2"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position='stacked'>State</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.individuals.state" placeholder="State"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position='stacked'>Postal Code</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.individuals.postal_code" placeholder="Postal Code">
+                </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked">Date Of Birth</ion-label>
+                <ion-datetime [(ngModel)]="userEdit.individuals.dob" placeholder="Select a Date"></ion-datetime>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked">Email</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.individuals.email" placeholder="Induvidual Email">
+                </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position='stacked'>First name</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.individuals.first_name" placeholder="First Name">
+                </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position='stacked'>Lastname</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.individuals.last_name" placeholder="Last Name"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position='stacked'>Maiden name</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.individuals.maiden_name" placeholder="Maiden Name">
+                </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position='stacked'>Phone</ion-label>
+                <ion-input type="number" [(ngModel)]="userEdit.individuals.phone" placeholder="Phone"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-radio-group [value]="userEdit.individuals.gender">
+                  <ion-list-header>
+                    <ion-label>Gender</ion-label>
+                  </ion-list-header>
+                  <ion-item>
+                    <ion-label>Male</ion-label>
+                    <ion-radio slot="start" color="success" value="male"></ion-radio>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>Female</ion-label>
+                    <ion-radio slot="start" color="success" value="female"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </ion-item>
+              <ion-item>
+                <ion-label position='stacked'>Account Holder Name</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.externalAccount.account_holder_name"
+                  placeholder="Account Holder Name">
+                </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position='stacked'>Account Holder Type</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.externalAccount.account_holder_type"
+                  placeholder="Account Holder Type">
+                </ion-input>
+              </ion-item>
+              <!-- <ion-item>
+                <ion-label position='stacked'>Account Number</ion-label>
+                <ion-input type="text" (keypress)="numberOnlyValidation($event)"
+                  [(ngModel)]="userEdit.externalAccount.account_number" placeholder="Account Number"></ion-input>
+              </ion-item> -->
+              <ion-item>
+                <ion-label position='stacked'>Account Routing</ion-label>
+                <ion-input type="text" (keypress)="numberOnlyValidation($event)"
+                  [(ngModel)]="userEdit.externalAccount.routing_number" placeholder="Routing Number"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position='stacked'>MCC</ion-label>
+                <ion-input type="number" [(ngModel)]="userEdit.businessProfile.mcc" placeholder="MCC"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position='stacked'>URL</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.businessProfile.url" placeholder="URL"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position='stacked'>Business Name</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.businessProfile.name" placeholder="Business Name">
+                </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked">TOS Acceptance</ion-label>
+                <ion-datetime [(ngModel)]="userEdit.tosAcceptance.date" placeholder="Select Date"></ion-datetime>
+              </ion-item>
+              <ion-item>
+                <ion-label position='stacked'>IP</ion-label>
+                <ion-input type="text" [(ngModel)]="userEdit.tosAcceptance.ip" placeholder="IP"></ion-input>
+              </ion-item>
+              <ion-button (click)="submitCustomer(customer,'edit')">Update</ion-button>
+              <ion-button (click)="deleteCustomer(i)">Delete</ion-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noCustomers>
+      <h4 style="display: grid; place-items: center"> No Customers </h4>
+    </ng-template>
+  </div>
+</ion-content>
+<!-- <ion-footer>
+  <div text-center>
+    <ion-button (click)="showBankList()" class="showBankListButton"> Link Your Bank Account</ion-button>
+  </div>
+</ion-footer> -->

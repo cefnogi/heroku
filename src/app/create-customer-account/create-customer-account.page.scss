@@ -1,0 +1,95 @@
+.create-customer-account {
+    background: antiquewhite;
+    margin: 10px;
+    padding: 20px;
+    position: relative;
+}
+
+ion-item {
+    margin-bottom: 20px;
+}
+
+.error {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.create-customer-account .front-image-section {
+    display: block;
+    margin-top: 10px;
+}
+
+.create-customer-account .front-image-section .front-image-browse-button{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 20px;
+    margin-top: 30px;
+}
+
+/* .front-image-preview{
+    width: 30px;
+    height: 30px;
+    margin-top: 30px;
+    margin-left: 20px;
+} */
+
+.create-customer-account .back-image-section {
+    display: block;
+    margin-top: 10px;
+}
+
+.create-customer-account .back-image-section .back-image-browse-button{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 20px;
+    margin-top: 75px;
+}
+
+.create-customer-account .upload-button {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.create-customer-account .image-preview {
+    position: relative;
+}
+
+.create-customer-account .image-preview .front-image-preview{
+    position: relative;
+}
+
+.create-customer-account .image-preview .front-image-preview .discard-front-image-preview{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 30px;
+}
+
+/* .create-customer-account .image-preview .front-title{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-top: 20px;
+} */
+
+.create-customer-account .image-preview .back-image-preview{
+    position: relative;
+}
+
+.create-customer-account .image-preview .back-image-preview .discard-back-image-preview{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 30px;
+}
+
+/* .create-customer-account .image-preview .front-title{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-top: 20px;
+} */
+
+

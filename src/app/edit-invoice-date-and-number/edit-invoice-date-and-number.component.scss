@@ -1,0 +1,28 @@
+ion-icon {
+    font-size: 30px;
+}
+
+.modal-dialog .modal-wrapper {
+    height: 20%;
+    top: 80%;
+    position: absolute; 
+    display: block;  
+}
+
+.edit-invoice {
+    display: block;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.edit-invoice-footer {
+    position: relative;
+    .save-invoice-date-and-number-button {
+        position: absolute;
+        text-align: center;
+        top: 0;
+        left: 0;
+    }
+}
+

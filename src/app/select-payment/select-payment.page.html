@@ -1,0 +1,109 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start" (click)="goBack()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-buttons>
+        <ion-title>Select Payment Method</ion-title>
+        <ion-buttons slot="end" (click)="goHome()">
+            <ion-icon name="home"></ion-icon>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="main-content">
+        <div class="selectpayment">
+            <ion-list name="payment_list">
+                <ion-radio-group name="payment" value="payment_method">
+                    <ion-list-header>
+                        <ion-label>Payment Method</ion-label>
+                    </ion-list-header>
+                    <ion-item>
+                        <ion-label>Credit or Debit Card</ion-label>
+                        <ion-radio name="credit_debit_card" value="credit_debit_card" slot="start"
+                            (click)="showCreditDebitCard()" checked="true"></ion-radio>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Net Banking</ion-label>
+                        <ion-radio [(ngModel)]="netBanking" name="netbanking" value="netbanking" slot="start" (click)="showNetBanking()">
+                        </ion-radio>
+                    </ion-item>
+                </ion-radio-group>
+            </ion-list>
+        </div>
+
+        <ion-card id="credit-debit-card" class="welcome-card" [hidden]="hideCreditDebitCard" #creditCardSlot>
+            <!-- <ion-img [src]="/assets/stripe.png"></ion-img> -->
+            <ion-card-header>
+                <ion-card-subtitle>This card will be securely saved for a faster payment experiences. CVV number will
+                    not be stored.</ion-card-subtitle>
+                <ion-card-title>Enter Your Card Details</ion-card-title>
+                <ion-row>
+                    <ion-col>Total Payment</ion-col>
+                    <ion-col> {{currencyIcon}}{{paymentAmount}} </ion-col>
+                </ion-row>
+            </ion-card-header>
+            <ion-card-content>
+                <form action="/" method="post" id="stripe-form">
+                    <div class="form-row">
+                        <div id="card-element">
+                            <!-- A Stripe Element will be inserted here. -->
+                        </div>
+                        <div id="card-errors">
+                            <!-- Display Element Errors -->
+                        </div>
+                    </div>
+                    <ion-button *ngIf="paymentFrom === 'wallet'" type="submit" color="success" expand="full">Add Balance</ion-button>
+                    <ion-button *ngIf="paymentFrom === 'invoice'" type="submit" color="success" expand="full">Pay Invoice</ion-button>
+                </form>
+            </ion-card-content>
+        </ion-card>
+        <ion-card class="bank-debit" [hidden]="true">
+            <ion-card-header>
+                <ion-card-title>Enter the details</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <form action="/" method="post" id="bank-debit-form">
+                    <ion-item>
+                        <ion-label position="floating">Enter Account Name</ion-label>
+                        <ion-input [(ngModel)]="account_name" type="text" name="account_name" placeholder="Account Name"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Enter Account Number</ion-label>
+                        <ion-input type="text" [(ngModel)]="account_number" name="account_number" placeholder="Account Number"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Enter Routing Number</ion-label>
+                        <ion-input type="text" [(ngModel)]="routing_number" name="routing_number" placeholder="Routing Number"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Account Type</ion-label>
+                        <ion-select value="biz-type" multiple="false" placeholder="Select Type" [(ngModel)]="account_type" name="account_type">
+                            <ion-select-option value="individual">Individual</ion-select-option>
+                            <ion-select-option value="company">Company</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-button type="button" color="success" expand="full" (click)="onProceed()">Proceed</ion-button>
+                </form>
+            </ion-card-content>
+        </ion-card>
+        <ion-card class="bank-debit" [hidden]="hideNetBanking">
+            <ion-card-header text-center>
+                <ion-card-title>Net Banking</ion-card-title>
+                <ion-card-subtitle>It looks like you have not connected a bank account. Click 
+                    below to connect an account.
+                </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content text-center>
+                <ion-button (click)="connectToBank()"> Connect To Bank</ion-button>
+            </ion-card-content>
+        </ion-card>
+        <!-- <div class="accounts" [hidden]="hideNetBanking">
+            <ion-card class="bank-debit" *ngIf="connectedAccounts.length">
+                <ion-card-header text-center>
+                    <ion-card-title>Connected Account</ion-card-title>
+                </ion-card-header>
+            </ion-card>
+        </div> -->
+    </div>
+</ion-content>

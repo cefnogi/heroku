@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Invoice List</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="ios-arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" class="btn-right">
+      <ion-icon name="add-circle-outline" (click)="generateinvoice()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment 
+  value="all" 
+  color="tertiary" 
+  scrollable="true"
+  mode="ios"
+  [(ngModel)]="segmentModel">
+
+    <ion-segment-button value="sent">
+      <ion-label>Sent</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="recieved">
+      <ion-label>Recieved</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="cleared">
+      <ion-label>Cleared</ion-label>
+    </ion-segment-button>
+
+  </ion-segment> 
+
+  <ion-card *ngIf="segmentModel === 'sent'">
+      <ion-card-content *ngFor="let plist of pendingList">
+
+        <div><b>From</b></div>
+        <div>{{plist.senderName}}</div>
+
+        <div><b>To</b></div>
+        <div>{{plist.full_name}}</div>
+
+        <div><b>Date of Transaction:  </b>{{plist.invoiceCreated | date: 'dd/MM/yyyy'}}</div>
+        <div><b>Transaction Amount: </b>$ {{plist.transactionAmount}} -</div>
+     
+      </ion-card-content>
+
+      
+
+
+   
+  </ion-card>
+
+  <ion-card *ngIf="segmentModel === 'recieved'">
+    <ion-card-content *ngFor="let rlist of recievedInvoiceList">
+
+      <div><b>From</b></div>
+      <div>{{rlist.senderName}}</div>
+
+      <div><b>To</b></div>
+      <div>{{rlist.full_name}}</div>
+
+      <div><b>Date of Transaction:  </b>{{rlist.invoiceCreated | date: 'dd/MM/yyyy'}}</div>
+      <div><b>Transaction Amount: </b>$ {{rlist.transactionAmount}} -</div>
+      <ion-button (click)="payInvoice(rlist)" >Pay</ion-button>
+    </ion-card-content>
+</ion-card>
+
+<ion-card *ngIf="segmentModel === 'cleared'">
+  <ion-card-content *ngFor="let clist of clearInvoiceList">
+
+    <div><b>From</b></div>
+    <div>{{clist.senderName}}</div>
+
+    <div><b>To</b></div>
+    <div>{{clist.full_name}}</div>
+
+    <div><b>Date of Transaction:  </b>{{clist.invoiceCreated | date: 'dd/MM/yyyy'}}</div>
+    <div><b>Transaction Amount: </b>$ {{clist.transactionAmount}} -</div>
+    <!-- <ion-button (click)="payInvoice(rlist)" >Clea</ion-button> -->
+  </ion-card-content>
+</ion-card>
+
+
+</ion-content>

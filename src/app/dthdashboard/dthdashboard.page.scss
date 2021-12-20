@@ -1,0 +1,26 @@
+ion-content {
+  --background: #f7f7f7;
+}
+.block_wrapper {
+  padding: 16px;
+  h5 {
+    font-size: 16px;
+    margin-left: 8px;
+    margin-bottom: 18px;
+  }
+  .single-block {
+    text-align: center;
+    background: #fff;
+    padding: 10px;
+    height: 130px;
+    box-shadow: 0 8px 15px -8px #ddd;
+    h6 {
+      text-transform: capitalize;
+      font-size: 15px;
+    }
+    img {
+      width: 55px;
+      margin-top: 5px;
+    }
+  }
+}

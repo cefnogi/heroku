@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Generate Invoice</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="ios-arrow-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <ion-list>
+<!--       <ion-item *ngIf="userType!='personal'">
+        <ion-input type="text" placeholder="Your Company Name" [(ngModel)]="invoiceForm.companyName"  ></ion-input>
+      </ion-item> -->
+      <ion-item>
+        <ion-input type="text" placeholder="Your Name" [(ngModel)]="invoiceForm.senderName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="email" placeholder="Email Address" [(ngModel)]="invoiceForm.emailAddress"></ion-input>
+      </ion-item>
+      <h5>Bill to:</h5>
+    
+      <ion-item (click)="presentModal()">
+        <ion-input type="text" placeholder="Customer Name" [(ngModel)]="invoiceTo.full_name" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="email" placeholder="Customer Email Address" [(ngModel)]="invoiceTo.email"></ion-input>
+      </ion-item>
+      <h5>Invoice# : <span>#{{invoiceNo}}</span></h5>
+      <h5>Due Date :</h5>
+      <ion-item>
+        <ion-datetime displayFormat="DD MMMM YYYY" placeholder="Select Date" [(ngModel)]="transaction.date"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-input type="number" placeholder="Price or Rate in $"  [(ngModel)]="transaction.amount"></ion-input>
+      </ion-item>
+    </ion-list>
+   
+  </div>
+</ion-content>
+
+<ion-footer >
+  <ion-button (click)="sendInvoice()" >send</ion-button>
+</ion-footer>

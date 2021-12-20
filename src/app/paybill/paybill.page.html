@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Select User to Transfer Money</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="ios-arrow-back"></ion-back-button>
+    </ion-buttons>
+	 <ion-buttons slot="end" (click)="addPayee()" class="btn-right">
+    <!--   <ion-icon name="more"></ion-icon> -->
+	  <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <div class="block_wrapper">
+   <ion-row>
+     <ion-col size="6">
+       <div class="single-block" (click)="electricitybill()">
+         <img src="assets/imgs/user.svg" alt="">
+          <h6>Michal Jhon</h6>
+       </div>
+     </ion-col>
+     <ion-col size="6" (click)="dthdashboard()">
+       <div class="single-block">
+         <img src="assets/imgs/user.svg" alt="">
+         <h6>Steve Smith</h6>
+       </div>
+     </ion-col>
+     <ion-col size="6">
+       <div class="single-block" (click)="gasconnectionbill()">
+         <img src="assets/imgs/user.svg" alt="">
+         <h6>Anuj Gupta</h6>
+       </div>
+     </ion-col>
+     <ion-col size="6">
+       <div class="single-block" (click)="broadbandbill()">
+         <img src="assets/imgs/user.svg" alt="">
+         <h6>Rajib Saxena</h6>
+       </div>
+     </ion-col>
+     <ion-col size="6">
+       <div class="single-block">
+         <img src="assets/imgs/user.svg" alt="">
+         <h6>Rahul Gupta</h6>
+       </div>
+     </ion-col>
+	 
+	   <ion-col size="6">
+       <div class="single-block">
+         <img src="assets/imgs/user.svg" alt="">
+         <h6>Add New Payee</h6>
+       </div>
+     </ion-col>
+   </ion-row>
+   
+ </div>
+</ion-content>

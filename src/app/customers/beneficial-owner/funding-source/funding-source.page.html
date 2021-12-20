@@ -1,0 +1,62 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start" (click)="goBack()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-buttons>
+        <ion-title>Funding</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div style="padding: 10px">
+        <div class="list-single" style="background-color: black" (click)="addFunding()">
+            <h4> Add Funding</h4>
+        </div>
+        <div *ngIf="addFundings">
+            <ion-list>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="funding.routingNumber" placeholder="Enter The Routing Number"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="funding.accountNumber" placeholder="Account Number"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="funding.bankAccountType" placeholder="Bank Account TYpe"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="funding.bankName" placeholder="Bank name "></ion-input>
+                </ion-item>
+            </ion-list>
+            <ion-button (click)="submitFunding()">Submit</ion-button>
+        </div>
+        <div *ngIf="allFundings.length > 0; else noFundings" class="customer-list">
+            <div style="background-color: gray;"
+                 *ngFor="let funding of allFundings; let i = index" class="list-single">
+                <div style="width: 100%">
+                    <div style="display: flex; width: 100%; justify-content: space-between">
+                        <h4>{{funding?.bankName}}</h4>
+                        <ion-buttons style="padding-right: 5px">
+                            <ion-icon (click)="updateFunding(i, funding)" name="create"
+                                      style="font-size: 23px"></ion-icon>
+                            <ion-icon (click)="deleteFunding(i, funding)" name="trash"
+                                      style="font-size: 23px"></ion-icon>
+<!--                            <ion-icon (click)="retriveBalance(i, funding)" name="logo-usd"-->
+<!--                                      style="font-size: 23px"></ion-icon>-->
+                        </ion-buttons>
+                    </div>
+                    <div style="padding-top: 25px" *ngIf="funding?.edit === true">
+                        <ion-list>
+                            <ion-item>
+                                <ion-input type="text" [(ngModel)]="editedFunding[i].bankName"
+                                           placeholder="Bank name "></ion-input>
+                            </ion-item>
+                        </ion-list>
+                        <ion-button (click)="submitFundingUpdate(i, funding)">Update</ion-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #noFundings>
+        <h4 style="display: grid; place-items: center"> No Fundings </h4>
+    </ng-template>
+</ion-content>

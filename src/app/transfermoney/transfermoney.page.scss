@@ -1,0 +1,89 @@
+.main-content {
+    padding: 15px;
+}
+
+.balance {
+    text-align: center;
+    padding: 10px;
+    background: antiquewhite;
+    border-radius: 14px;
+    color: rgb(214, 165, 101);
+    font-weight: bolder;
+}
+
+.add-money {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+}
+
+.add-group-button {
+    color: #000;
+    font-size: 15px;
+    font-weight: bolder;
+    margin-right: 15px;
+    background-color: gray;
+    padding: 20px;
+    border-radius: 5px;
+    align-self: center;
+}
+
+.list-single {
+    background: #2baff3;
+    text-align: left;
+    padding: 13px 7px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    display: flex;
+    span {
+        background: #fff;
+        width: 36px;
+        height: 36px;
+        text-align: center;
+        border-radius: 50%;
+    }
+    img {
+        margin: 5px 0 0;
+        width: 25px;
+    }
+    h4 {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 100;
+        text-transform: uppercase;
+        margin: 9px 0 4px 10px;
+    }
+}
+.main-layout {
+    padding: 15px;
+}
+
+.transfer-money {
+    button {
+        background-color: #000;
+        color: #fff;
+        width: 80%;
+        margin: auto;
+        margin: 15px auto 0px auto;
+        display: grid;
+        place-items: center;
+    }
+
+    .tranfering-input {
+        margin-top: 15px;
+        padding: 10px;
+    }
+}
+
+.doller-btn {
+    background: none;
+    outline: none;
+    border:none;
+}
+
+.btn-add-payout {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+

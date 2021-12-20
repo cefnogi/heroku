@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-buttons>
+    <ion-title>Transaction Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="transaction-card">
+    <div>
+      Transaction ID: {{transaction_id}}
+    </div>
+    <div style="margin-top: 10px;">
+      Amount: {{amount}}
+    </div>
+    <div style="margin-top: 10px;">
+      Transaction Type: {{transaction_type}}
+    </div>
+    <div style="margin-top: 10px;">
+      Date Of Transaction: {{transaction_date}}
+    </div>
+    <div style="margin-top: 10px;">
+      Time Of Transaction: {{transaction_time}}
+    </div>
+    <div style="margin-top: 10px;" *ngIf="transaction_type === 'Add'">
+      Description: {{description}}
+    </div>
+    <div style="margin-top: 10px;" *ngIf="transaction_type === 'Add'">
+      Card Brand: {{card_brand}}
+    </div>
+    <div *ngIf="transaction_type === 'Add'" text-center>
+      <div>
+        <ion-button style="margin-right: 10px; " color="primary" (click)="viewReceipt()">
+          View Receipt
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

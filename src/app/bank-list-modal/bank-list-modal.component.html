@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-buttons>
+    <ion-title>Select Bank</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar placeholder="Search..." [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
+  <ion-list>
+    <ion-radio-group name="institution">
+      <ion-item *ngFor="let bank of allBanks">
+        <ion-label>{{bank.name}}</ion-label>
+        <ion-radio value="{{bank.name.toLowerCase().replace(' ', '-')}}"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <div text-center inline>
+    <ion-button (click)="dismiss()" shape="round">
+      Cancel
+    </ion-button>
+    <ion-button (click)="dismiss()" shape="round">
+      OK
+    </ion-button>
+  </div>
+</ion-footer>

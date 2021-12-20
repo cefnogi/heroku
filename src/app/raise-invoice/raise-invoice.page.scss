@@ -1,0 +1,78 @@
+.invoice-details {
+  background: antiquewhite;
+  margin: 10px;
+  padding: 20px;
+  position: relative;
+}
+
+.invoice-details .invoice-column .invoice-date {
+   display: block;
+   margin-top: 10px;
+}
+
+.invoice-details .invoice-column .edit-invoice {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 20px;
+    margin-top: 30px;
+}
+
+.customer-details {
+  background: antiquewhite;
+  margin: 10px;
+  padding: 40px;
+  position: relative;
+  h5 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin-top: 10px;
+      margin-left: 20px;
+  }
+  
+}
+
+.customer-details .customer-name-item {
+    display: block;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.customer-details .customer-email-item {
+    display: block;
+    margin-left: 20px;
+    margin-top: 20px;
+
+}
+
+.raise-invoice-button {
+    text-align: center;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.customer-details .customer-list {
+    display: block;
+    margin-left: 20px;
+    margin-top: 20px;
+    height: 200px;
+}
+
+
+.customer-details .customer-content {
+    display: block;
+    height: 150px;
+    margin-left: 20px;
+    margin-top: 0px !important;
+    overflow-y: scroll;
+}
+
+ion-input {
+    --placeholder-opacity: 0;
+}
+
+.error {
+    color: rgb(255, 0, 0);
+}
+

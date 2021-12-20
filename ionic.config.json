@@ -1,0 +1,7 @@
+{
+  "name": "ugocash",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
